@@ -15,5 +15,10 @@ public class YellowBalloon extends Actor
     public void act()
     {
         // Add your action code here.
+        MyWorld world = (MyWorld) getWorld();
+        if(Greenfoot.mouseClicked(this))
+        {
+            world.removeObject(this);
+        }
     }
 }
