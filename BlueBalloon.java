@@ -8,15 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BlueBalloon extends Actor
 {
-    /**
-     * Act - do whatever the BlueBalloon wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    int speed = -1;
+    
     public void act()
     {
         // Add your action code here.
+        int x = getX();
+        int y = getY() + speed;
+        setLocation(x, y);
+        
+        
         MyWorld world = (MyWorld) getWorld();
-        if(Greenfoot.mouseMoved(this))
+        if(Greenfoot.mouseDragged(this))
         {
             world.removeObject(this);
         }
