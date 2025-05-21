@@ -2,22 +2,37 @@ import greenfoot.*;
 
 public class MyWorld extends World {
     public MyWorld() {
-        super(600, 400, 1);
+        super(600, 400, 1, true);
         
         //add objects to world
-        RedBalloon balloon1 = new RedBalloon();
-        addObject(balloon1, 400, 300);
-        BlueBalloon balloon2 = new BlueBalloon();
-        addObject(balloon2, 300, 300);
-        YellowBalloon balloon3 = new YellowBalloon();
-        addObject(balloon3, 200, 300);
+        createRed();
+        createBlue();
+        createYellow();
         
-
+        
     }
     
-    public void addYellowBalloon()
+    public void createRed()
     {
-        YellowBalloon balloon4 = new YellowBalloon();
-        addObject(balloon4, 500, 350);
+        RedBalloon red = new RedBalloon();
+        int x = Greenfoot.getRandomNumber(600);
+        int y = 400;
+        addObject(red, x, y);
+    }
+    
+    public void createBlue()
+    {
+        BlueBalloon blue = new BlueBalloon();
+        int x = Greenfoot.getRandomNumber(600);
+        int y = 400;
+        addObject(blue, x, y);
+    }
+    
+    public void createYellow()
+    {
+        YellowBalloon yellow = new YellowBalloon();
+        int x = Greenfoot.getRandomNumber(600);
+        int y = 400;
+        addObject(yellow, x, y);
     }
 }
