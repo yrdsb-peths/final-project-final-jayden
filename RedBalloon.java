@@ -20,6 +20,7 @@ public class RedBalloon extends Actor
         if(Greenfoot.mouseDragged(this))
         {
             world.removeObject(this);
+            world.spawnBalloon();
         }
     }
 }
