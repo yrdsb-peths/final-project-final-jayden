@@ -22,5 +22,10 @@ public class RedBalloon extends Actor
             world.removeObject(this);
             world.spawnBalloon();
         }
+        if(getY() <= 0)
+        {
+            world.gameOver();
+            world.removeObject(this);
+        }
     }
 }

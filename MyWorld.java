@@ -48,4 +48,10 @@ public class MyWorld extends World {
             createYellow();
         }
     }
+    
+    public void gameOver()
+    {
+        Label gameOverLabel = new Label("Game Over", 100);
+        addObject(gameOverLabel, 400, 200);
+    }
 }
