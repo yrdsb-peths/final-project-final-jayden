@@ -8,14 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RedBalloon extends Actor
 {
-    int speed = -1;
-    
     public void act()
     {
         // Add your action code here.
         MyWorld world = (MyWorld) getWorld();
         int x = getX();
-        int y = getY() + speed;
+        int y = getY() + world.speed;
         setLocation(x, y);
         
         if(getY() <= 0)

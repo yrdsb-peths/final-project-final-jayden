@@ -3,7 +3,8 @@ import greenfoot.*;
 public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
-    
+    int speed = -1;
+    int balloons = 1;
     
     public MyWorld() {
         super(800, 400, 1, true);
@@ -42,21 +43,22 @@ public class MyWorld extends World {
     
     public void spawnBalloon()
     {
-    
-        int color = Greenfoot.getRandomNumber(3);
-        if(color == 0)
+        for(int i = 0; i < balloons; i++)
         {
-            createRed();
+            int color = Greenfoot.getRandomNumber(3);
+            if(color == 0)
+            {
+                createRed();
+            }
+            else if(color == 1)
+            {
+                createBlue();
+            }
+            else if(color == 2)
+            {
+                createYellow();
+            }
         }
-        else if(color == 1)
-        {
-            createBlue();
-        }
-        else if(color == 2)
-        {
-            createYellow();
-        }
-    
     }
     
     public void gameOver()
@@ -71,6 +73,10 @@ public class MyWorld extends World {
         score++;
         scoreLabel.setValue(score);
         
-        
+        if(score % 15 == 0)
+        {
+            speed--;
+            balloons++;
+        }
     }
 }
