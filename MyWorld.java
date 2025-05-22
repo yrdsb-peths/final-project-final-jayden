@@ -1,11 +1,19 @@
 import greenfoot.*;
 
 public class MyWorld extends World {
+    public int score = 0;
+    Label scoreLabel;
+    
+    
     public MyWorld() {
         super(800, 400, 1, true);
         
         //add objects to world
         spawnBalloon();
+        
+        //score function
+        scoreLabel = new Label(0, 80);
+        addObject(scoreLabel, 50, 50);
     }
     
     public void createRed()
@@ -34,6 +42,7 @@ public class MyWorld extends World {
     
     public void spawnBalloon()
     {
+    
         int color = Greenfoot.getRandomNumber(3);
         if(color == 0)
         {
@@ -47,6 +56,7 @@ public class MyWorld extends World {
         {
             createYellow();
         }
+    
     }
     
     public void gameOver()
@@ -54,5 +64,13 @@ public class MyWorld extends World {
         removeObjects(getObjects(null));
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel, 400, 200);
+    }
+    
+    public void increaseScore()
+    {
+        score++;
+        scoreLabel.setValue(score);
+        
+        
     }
 }

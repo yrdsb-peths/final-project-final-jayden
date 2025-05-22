@@ -9,14 +9,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class YellowBalloon extends Actor
 {
     int speed = -1;
+    
     public void act()
     {
         // Add your action code here.
+        MyWorld world = (MyWorld) getWorld();
         int x = getX();
         int y = getY() + speed;
         setLocation(x, y);
         
-        MyWorld world = (MyWorld) getWorld();
         if(getY() <= 0)
         {
             world.gameOver();
@@ -25,6 +26,7 @@ public class YellowBalloon extends Actor
         {
             world.removeObject(this);
             world.spawnBalloon();
+            world.increaseScore();
         }
     }
 }
