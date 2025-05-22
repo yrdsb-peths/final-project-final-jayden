@@ -17,15 +17,15 @@ public class RedBalloon extends Actor
         setLocation(x, y);
         
         MyWorld world = (MyWorld) getWorld();
+        if(getY() <= 0)
+        {
+            world.gameOver();
+        }
         if(Greenfoot.mouseDragged(this))
         {
             world.removeObject(this);
             world.spawnBalloon();
         }
-        if(getY() <= 0)
-        {
-            world.gameOver();
-            world.removeObject(this);
-        }
+        
     }
 }

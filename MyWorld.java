@@ -51,6 +51,7 @@ public class MyWorld extends World {
     
     public void gameOver()
     {
+        removeObjects(getObjects(null));
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel, 400, 200);
     }
