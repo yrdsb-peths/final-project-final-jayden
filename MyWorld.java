@@ -8,6 +8,7 @@ public class MyWorld extends World {
     
     public MyWorld() {
         super(800, 400, 1, true);
+        setBackground(new GreenfootImage("images/background.jpg"));
         
         //add objects to world
         spawnBalloon();
@@ -65,7 +66,9 @@ public class MyWorld extends World {
     {
         removeObjects(getObjects(null));
         Label gameOverLabel = new Label("Game Over", 100);
+        Label finalScore = new Label("Final score: " + score, 50);
         addObject(gameOverLabel, 400, 200);
+        addObject(finalScore, 400, 100);
     }
     
     public void increaseScore()
