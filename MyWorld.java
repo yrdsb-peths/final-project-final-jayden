@@ -3,7 +3,8 @@ import greenfoot.*;
 public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
-    int speed = -1;
+    int xSpeed = 0;
+    int ySpeed = -1;
     int balloons = 1;
     
     public MyWorld() {
@@ -73,13 +74,15 @@ public class MyWorld extends World {
     
     public void increaseScore()
     {
+        xSpeed = -2 + Greenfoot.getRandomNumber(4);
         score++;
         scoreLabel.setValue(score);
         
         if(score % 15 == 0)
         {
-            speed--;
             balloons++;
         }
     }
+    
+    
 }

@@ -12,8 +12,8 @@ public class RedBalloon extends Actor
     {
         // Add your action code here.
         MyWorld world = (MyWorld) getWorld();
-        int x = getX();
-        int y = getY() + world.speed;
+        int x = getX() + world.xSpeed;
+        int y = getY() + world.ySpeed;
         setLocation(x, y);
         
         if(getY() <= 0)
