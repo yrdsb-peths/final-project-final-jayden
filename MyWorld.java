@@ -6,6 +6,14 @@ public class MyWorld extends World {
         
         //add objects to world
         spawnBalloon();
+<<<<<<< Updated upstream
+=======
+        
+        //score function
+        scoreLabel = new Label(0, 80);
+        addObject(scoreLabel, 50, 50);
+        
+>>>>>>> Stashed changes
     }
     
     public void createRed()
@@ -41,11 +49,16 @@ public class MyWorld extends World {
         }
         else if(color == 1)
         {
+<<<<<<< Updated upstream
             createBlue();
         }
         else if(color == 2)
         {
             createYellow();
+=======
+            
+            balloons++;
+>>>>>>> Stashed changes
         }
     }
 }
