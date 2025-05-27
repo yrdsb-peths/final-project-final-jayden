@@ -1,19 +1,25 @@
 import greenfoot.*;
 
 public class MyWorld extends World {
+    int score;
+    int balloons;
+    Label scoreLabel;
     public MyWorld() {
         super(800, 400, 1, true);
         
         //add objects to world
         spawnBalloon();
-<<<<<<< Updated upstream
-=======
         
         //score function
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 50, 50);
         
->>>>>>> Stashed changes
+        if(Greenfoot.isKeyDown("a"))
+        {
+            int objectAmt = numberOfObjects();
+            score+=objectAmt;
+            removeObjects(getObjects(null));
+        }
     }
     
     public void createRed()
@@ -49,16 +55,12 @@ public class MyWorld extends World {
         }
         else if(color == 1)
         {
-<<<<<<< Updated upstream
             createBlue();
         }
         else if(color == 2)
         {
             createYellow();
-=======
-            
-            balloons++;
->>>>>>> Stashed changes
         }
+        balloons++;
     }
 }
