@@ -8,6 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BlueBalloon extends Actor
 {
+    public BlueBalloon()
+    {
+        setImage("images/balloon2.png");
+    }
+    
     public void act()
     {
         // Add your action code here.
