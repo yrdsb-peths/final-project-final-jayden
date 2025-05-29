@@ -1,23 +1,25 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class YellowBalloon here.
+ * Write a description of class RedBalloon here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public class YellowBalloon extends Actor
 {
-    public YellowBalloon()
+    int xSpeed;
+    public YellowBalloon(int speedX)
     {
         setImage("images/balloon3.png");
+        xSpeed = speedX;
     }
     
     public void act()
     {
         // Add your action code here.
         MyWorld world = (MyWorld) getWorld();
-        int x = getX() + world.xSpeed;
+        int x = getX() + xSpeed;
         int y = getY() + world.ySpeed;
         setLocation(x, y);
         

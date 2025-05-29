@@ -8,17 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RedBalloon extends Actor
 {
-    public RedBalloon()
+    int xSpeed;
+    int ySpeed;
+    public RedBalloon(int speedX, int speedY)
     {
         setImage("images/balloon1.png");
+        xSpeed = speedX;
+        ySpeed = speedY;
     }
     
     public void act()
     {
         // Add your action code here.
         MyWorld world = (MyWorld) getWorld();
-        int x = getX() + world.xSpeed;
-        int y = getY() + world.ySpeed;
+        int x = getX() + xSpeed;
+        int y = getY() + ySpeed;
         setLocation(x, y);
         
         if(getY() <= 0)

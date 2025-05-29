@@ -3,7 +3,6 @@ import greenfoot.*;
 public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
-    int xSpeed = 0;
     int ySpeed = -1;
     int balloons = 1;
     
@@ -19,9 +18,19 @@ public class MyWorld extends World {
         addObject(scoreLabel, 50, 50);
     }
     
+    public int randomX()
+    {
+        return -2 + Greenfoot.getRandomNumber(4);
+    }
+    
+    public int randomY()
+    {
+        return -3 + Greenfoot.getRandomNumber(2);
+    }
+    
     public void createRed()
     {
-        RedBalloon red = new RedBalloon();
+        RedBalloon red = new RedBalloon(randomX(), randomY());
         int x = Greenfoot.getRandomNumber(800);
         int y = 400;
         addObject(red, x, y);
@@ -29,7 +38,7 @@ public class MyWorld extends World {
     
     public void createBlue()
     {
-        BlueBalloon blue = new BlueBalloon();
+        BlueBalloon blue = new BlueBalloon(randomX());
         int x = Greenfoot.getRandomNumber(800);
         int y = 400;
         addObject(blue, x, y);
@@ -37,7 +46,7 @@ public class MyWorld extends World {
     
     public void createYellow()
     {
-        YellowBalloon yellow = new YellowBalloon();
+        YellowBalloon yellow = new YellowBalloon(randomX());
         int x = Greenfoot.getRandomNumber(800);
         int y = 400;
         addObject(yellow, x, y);
@@ -74,7 +83,6 @@ public class MyWorld extends World {
     
     public void increaseScore()
     {
-        xSpeed = -2 + Greenfoot.getRandomNumber(4);
         score++;
         scoreLabel.setValue(score);
         
