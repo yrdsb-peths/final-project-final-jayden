@@ -14,7 +14,7 @@ public class RedBalloon extends Actor
     {
         setImage("images/balloon1.png");
         xSpeed = speedX;
-        ySpeed = speedY;
+        ySpeed = -1;
     }
     
     public void act()

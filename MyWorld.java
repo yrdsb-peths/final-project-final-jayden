@@ -12,6 +12,7 @@ public class MyWorld extends World {
         
         //add objects to world
         spawnBalloon();
+        mouse();
         
         //score function
         scoreLabel = new Label(0, 80);
@@ -92,5 +93,16 @@ public class MyWorld extends World {
         }
     }
     
-    
+    public void mouse()
+    {
+        if(Greenfoot.mouseDragged(null))
+        {
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            int mouseX = mouse.getX();
+            int mouseY = mouse.getY();
+            MouseTrail trail = new MouseTrail();
+            addObject(trail, mouseX, mouseY);
+            trail.setLocation(mouseX, mouseY);
+        }
+    }
 }
