@@ -9,20 +9,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BlueBalloon extends Actor
 {
     int xSpeed;
-    public BlueBalloon(int speedX)
+    double ySpeed;
+    public BlueBalloon(int speedX, double speedY)
     {
-        setImage("images/balloon2.png");
+        setImage("images/balloon1.png");
         xSpeed = speedX;
+        ySpeed = -1;
     }
     
     public void act()
     {
         // Add your action code here.
         MyWorld world = (MyWorld) getWorld();
+        double acceleration = 0.02;
         int x = getX() + xSpeed;
-        int y = getY() + world.ySpeed;
-        setLocation(x, y);
-        
+        double y = getY() + ySpeed;
+        setLocation(x, (int)y);
+        if(ySpeed >= -5)
+        {
+            ySpeed-=acceleration;
+        }
         if(getY() <= 0)
         {
             world.gameOver();

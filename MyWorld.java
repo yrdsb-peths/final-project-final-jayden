@@ -3,8 +3,9 @@ import greenfoot.*;
 public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
-    int ySpeed = -1;
     int balloons = 1;
+    int x = Greenfoot.getRandomNumber(800);
+    int y = 200;
     
     public MyWorld() {
         super(800, 400, 1, true);
@@ -31,24 +32,18 @@ public class MyWorld extends World {
     public void createRed()
     {
         RedBalloon red = new RedBalloon(randomX(), randomY());
-        int x = Greenfoot.getRandomNumber(800);
-        int y = 400;
         addObject(red, x, y);
     }
     
     public void createBlue()
     {
-        BlueBalloon blue = new BlueBalloon(randomX());
-        int x = Greenfoot.getRandomNumber(800);
-        int y = 400;
+        BlueBalloon blue = new BlueBalloon(randomX(), randomY());
         addObject(blue, x, y);
     }
     
     public void createYellow()
     {
-        YellowBalloon yellow = new YellowBalloon(randomX());
-        int x = Greenfoot.getRandomNumber(800);
-        int y = 400;
+        YellowBalloon yellow = new YellowBalloon(randomX(), randomY());
         addObject(yellow, x, y);
     }
     
