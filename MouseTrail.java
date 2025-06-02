@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MouseTrail extends Actor
 {
+    private int duration = 30;
     /**
      * Act - do whatever the MouseTrail wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,5 +16,10 @@ public class MouseTrail extends Actor
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
+        duration--;
+        if(duration <= 0)
+        {
+            world.removeObject(this);
+        }
     }
 }
