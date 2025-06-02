@@ -15,9 +15,5 @@ public class MouseTrail extends Actor
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        int mouseX = mouse.getX();
-        int mouseY = mouse.getY();
-        
     }
 }

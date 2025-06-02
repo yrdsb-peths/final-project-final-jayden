@@ -12,11 +12,22 @@ public class MyWorld extends World {
         
         //add objects to world
         spawnBalloon();
-        mouse();
+        
+        
         
         //score function
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 50, 50);
+    }
+    
+    public void act()
+    {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if(Greenfoot.mouseDragged(null))
+        {
+            MouseTrail trail = new MouseTrail();
+            addObject(trail, mouse.getX(), mouse.getY());
+        } 
     }
     
     public int randomX()
@@ -93,16 +104,5 @@ public class MyWorld extends World {
         }
     }
     
-    public void mouse()
-    {
-        if(Greenfoot.mouseDragged(null))
-        {
-            MouseInfo mouse = Greenfoot.getMouseInfo();
-            int mouseX = mouse.getX();
-            int mouseY = mouse.getY();
-            MouseTrail trail = new MouseTrail();
-            addObject(trail, mouseX, mouseY);
-            trail.setLocation(mouseX, mouseY);
-        }
-    }
+
 }
