@@ -25,9 +25,13 @@ public class BlueBalloon extends Actor
         int x = getX() + xSpeed;
         double y = getY() + ySpeed;
         setLocation(x, (int)y);
-        if(ySpeed >= -5)
+        while(ySpeed >= -5)
         {
             ySpeed-=acceleration;
+        }
+        while(ySpeed <= -5 && ySpeed <= 5)
+        {
+            ySpeed+=acceleration;
         }
         if(getY() <= 0)
         {

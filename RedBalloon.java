@@ -6,15 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class RedBalloon extends Actor
+public class RedBalloon extends SmoothMover
 {
     int xSpeed;
     double ySpeed;
-    public RedBalloon(int speedX, double speedY)
+    public RedBalloon(int speedX)
     {
         setImage("images/balloon1.png");
         xSpeed = speedX;
-        ySpeed = speedY;
     }
     
     public void act()
@@ -22,12 +21,16 @@ public class RedBalloon extends Actor
         // Add your action code here.
         MyWorld world = (MyWorld) getWorld();
         double acceleration = 0.02;
-        int x = getX() + xSpeed;
+        double x = getX() + xSpeed;
         double y = getY() + ySpeed;
-        setLocation(x, (int)y);
-        if(ySpeed >= -5)
+        super.setLocation(x, y);
+        if(ySpeed > -1)
         {
             ySpeed-=acceleration;
+        }
+        else
+        {
+            ySpeed+=acceleration;
         }
         if(getY() <= 0)
         {

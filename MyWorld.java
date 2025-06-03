@@ -5,7 +5,7 @@ public class MyWorld extends World {
     Label scoreLabel;
     int balloons = 1;
     int x = Greenfoot.getRandomNumber(800);
-    int y = 200;
+    int y = 400;
     
     public MyWorld() {
         super(800, 400, 1, true);
@@ -31,7 +31,7 @@ public class MyWorld extends World {
     
     public void createRed()
     {
-        RedBalloon red = new RedBalloon(randomX(), randomY());
+        RedBalloon red = new RedBalloon(randomX());
         addObject(red, x, y);
     }
     
