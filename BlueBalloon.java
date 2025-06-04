@@ -18,7 +18,6 @@ public class BlueBalloon extends RedBalloon
     {
         // Add your action code here.
         MyWorld world = (MyWorld) getWorld();
-        double acceleration = 0.5;
         ySpeed+=acceleration;
         double x = getX() + xSpeed;
         double y = getY() + ySpeed;
