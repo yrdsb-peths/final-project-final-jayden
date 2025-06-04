@@ -12,7 +12,7 @@ public class YellowBalloon extends Actor
     double ySpeed;
     public YellowBalloon(int speedX, double speedY)
     {
-        setImage("images/balloon1.png");
+        setImage("images/balloon3.png");
         xSpeed = speedX;
         ySpeed = -1;
     }

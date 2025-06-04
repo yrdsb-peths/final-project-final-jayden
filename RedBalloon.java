@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class RedBalloon extends SmoothMover
 {
     int xSpeed;
-    double ySpeed;
+    double ySpeed = -10;
     public RedBalloon(int speedX)
     {
         setImage("images/balloon1.png");
@@ -20,22 +20,17 @@ public class RedBalloon extends SmoothMover
     {
         // Add your action code here.
         MyWorld world = (MyWorld) getWorld();
-        double acceleration = 0.02;
+        double acceleration = 0.5;
+        ySpeed+=acceleration;
         double x = getX() + xSpeed;
         double y = getY() + ySpeed;
         super.setLocation(x, y);
-        if(ySpeed > -1)
-        {
-            ySpeed-=acceleration;
-        }
-        else
-        {
-            ySpeed+=acceleration;
-        }
+        
         if(getY() <= 0)
         {
             world.gameOver();
         }
+        
         if(Greenfoot.mouseDragged(this))
         {
             world.removeObject(this);
