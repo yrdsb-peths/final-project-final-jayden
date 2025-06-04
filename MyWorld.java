@@ -4,7 +4,6 @@ public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
     int balloons = 1;
-    int x = Greenfoot.getRandomNumber(800);
     int y = 400;
     
     public MyWorld() {
@@ -36,26 +35,24 @@ public class MyWorld extends World {
         return -2 + Greenfoot.getRandomNumber(4);
     }
     
-    public int randomY()
-    {
-        return -3 + Greenfoot.getRandomNumber(2);
-    }
-    
     public void createRed()
     {
+        int x = Greenfoot.getRandomNumber(800);
         RedBalloon red = new RedBalloon(randomX());
         addObject(red, x, y);
     }
     
     public void createBlue()
     {
-        BlueBalloon blue = new BlueBalloon(randomX(), randomY());
+        int x = Greenfoot.getRandomNumber(800);
+        BlueBalloon blue = new BlueBalloon(randomX());
         addObject(blue, x, y);
     }
     
     public void createYellow()
     {
-        YellowBalloon yellow = new YellowBalloon(randomX(), randomY());
+        int x = Greenfoot.getRandomNumber(800);
+        YellowBalloon yellow = new YellowBalloon(randomX());
         addObject(yellow, x, y);
     }
     
