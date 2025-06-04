@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class RedBalloon extends SmoothMover
 {
     int xSpeed;
-    double ySpeed = -8;
-    double acceleration = 0.25;
+    double ySpeed = -8 + Greenfoot.getRandomNumber(3);
+    double acceleration = 0.2;
     public RedBalloon(int speedX)
     {
         setImage("images/balloon1.png");
@@ -26,7 +26,7 @@ public class RedBalloon extends SmoothMover
         double y = getY() + ySpeed;
         super.setLocation(x, y);
         
-        if(getY() <= 0)
+        if(getY() >= 399)
         {
             world.gameOver();
         }

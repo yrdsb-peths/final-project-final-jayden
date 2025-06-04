@@ -23,7 +23,7 @@ public class BlueBalloon extends RedBalloon
         double y = getY() + ySpeed;
         super.setLocation(x, y);
         
-        if(getY() <= 0)
+        if(getY() >= 399)
         {
             world.gameOver();
         }
