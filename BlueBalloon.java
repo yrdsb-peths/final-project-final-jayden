@@ -18,9 +18,9 @@ public class BlueBalloon extends RedBalloon
     {
         // Add your action code here.
         MyWorld world = (MyWorld) getWorld();
-        ySpeed+=acceleration;
+        world.ySpeed+=acceleration;
         double x = getX() + xSpeed;
-        double y = getY() + ySpeed;
+        double y = getY() + world.ySpeed;
         super.setLocation(x, y);
         
         if(getY() >= 399)

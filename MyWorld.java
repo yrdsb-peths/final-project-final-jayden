@@ -3,15 +3,17 @@ import greenfoot.*;
 public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
-    int balloons = 1;
     int xSpeed;
+    double ySpeed;
     int y = 0;
+    
     
     public MyWorld() {
         super(800, 400, 1, true);
         setBackground(new GreenfootImage("images/background.jpg"));
         
         //add objects to world
+        RedBalloon.acceleration = 0.1;
         spawnBalloon();
         
         //score function
@@ -32,15 +34,17 @@ public class MyWorld extends World {
     public int spawnLocation()
     {
         int location = Greenfoot.getRandomNumber(3);
+        ySpeed = -4 + Greenfoot.getRandomNumber(3);
         if(location == 0)
         {
-            return 0;
+            ySpeed = 0;
+            return 100 + Greenfoot.getRandomNumber(600);
         }
         else if(location == 1)
         {
             return 800;
         }
-        return 100 + Greenfoot.getRandomNumber(600);
+        return 0;
     }
     
     public void createRed()
@@ -105,21 +109,18 @@ public class MyWorld extends World {
     
     public void spawnBalloon()
     {
-        for(int i = 0; i < balloons; i++)
+        int color = Greenfoot.getRandomNumber(3);
+        if(color == 0)
         {
-            int color = Greenfoot.getRandomNumber(3);
-            if(color == 0)
-            {
-                createRed();
-            }
-            else if(color == 1)
-            {
-                createBlue();
-            }
-            else if(color == 2)
-            {
-                createYellow();
-            }
+            createRed();
+        }
+        else if(color == 1)
+        {
+            createBlue();
+        }
+        else if(color == 2)
+        {
+            createYellow();
         }
     }
     
@@ -139,7 +140,7 @@ public class MyWorld extends World {
         
         if(score % 15 == 0)
         {
-            balloons++;
+            RedBalloon.acceleration+=0.05;
         }
     }
 }
