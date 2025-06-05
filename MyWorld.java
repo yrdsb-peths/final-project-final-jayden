@@ -4,6 +4,7 @@ public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
     int balloons = 1;
+    int xSpeed;
     int y = 0;
     
     public MyWorld() {
@@ -39,56 +40,66 @@ public class MyWorld extends World {
         {
             return 800;
         }
-        return Greenfoot.getRandomNumber(800);
-    }
-    
-    public int randomXSpeed()
-    {
-        return -2 + Greenfoot.getRandomNumber(4);
+        return 100 + Greenfoot.getRandomNumber(600);
     }
     
     public void createRed()
     {
         int x = spawnLocation();
-        if(x == 0 || x == 800)
+        y = 200 - Greenfoot.getRandomNumber(150);
+        if(x == 0)
         {
-            y = 300 - Greenfoot.getRandomNumber(200);
+            xSpeed = 5 - Greenfoot.getRandomNumber(3);
         }
         else
         {
+            xSpeed = -5 + Greenfoot.getRandomNumber(3);
+        }
+        if(x != 0 && x != 800)
+        {
             y = 0;
         }
-        RedBalloon red = new RedBalloon(randomXSpeed());
+        RedBalloon red = new RedBalloon(xSpeed);
         addObject(red, x, y);
     }
     
     public void createBlue()
     {
         int x = spawnLocation();
-        if(x == 0 || x == 800)
+        y = 200 - Greenfoot.getRandomNumber(150);
+        if(x == 0)
         {
-            y = 400 - Greenfoot.getRandomNumber(200);
+            xSpeed = 5 - Greenfoot.getRandomNumber(3);
         }
         else
         {
+            xSpeed = -5 + Greenfoot.getRandomNumber(3);
+        }
+        if(x != 0 && x != 800)
+        {
             y = 0;
         }
-        BlueBalloon blue = new BlueBalloon(randomXSpeed());
+        BlueBalloon blue = new BlueBalloon(xSpeed);
         addObject(blue, x, y);
     }
     
     public void createYellow()
     {
         int x = spawnLocation();
-        if(x == 0 || x == 800)
+        y = 200 - Greenfoot.getRandomNumber(150);
+        if(x == 0)
         {
-            y = 400 - Greenfoot.getRandomNumber(200);
+            xSpeed = 5 - Greenfoot.getRandomNumber(3);
         }
         else
         {
+            xSpeed = -5 + Greenfoot.getRandomNumber(3);
+        }
+        if(x != 0 && x != 800)
+        {
             y = 0;
         }
-        YellowBalloon yellow = new YellowBalloon(randomXSpeed());
+        YellowBalloon yellow = new YellowBalloon(xSpeed);
         addObject(yellow, x, y);
     }
     
@@ -131,6 +142,4 @@ public class MyWorld extends World {
             balloons++;
         }
     }
-    
-
 }
