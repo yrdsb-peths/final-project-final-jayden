@@ -47,21 +47,27 @@ public class MyWorld extends World {
         return 0;
     }
     
+    public int setXSpeed()
+    {
+        return 5 - Greenfoot.getRandomNumber(3);
+    }
+    
     public void createRed()
     {
         int x = spawnLocation();
         y = 200 - Greenfoot.getRandomNumber(150);
         if(x == 0)
         {
-            xSpeed = 5 - Greenfoot.getRandomNumber(3);
+            xSpeed = setXSpeed();
         }
         else
         {
-            xSpeed = -5 + Greenfoot.getRandomNumber(3);
+            xSpeed = setXSpeed() * -1;
         }
         if(x != 0 && x != 800)
         {
             y = 0;
+            xSpeed = 4 - Greenfoot.getRandomNumber(8);
         }
         RedBalloon red = new RedBalloon(xSpeed);
         addObject(red, x, y);
@@ -73,15 +79,16 @@ public class MyWorld extends World {
         y = 200 - Greenfoot.getRandomNumber(150);
         if(x == 0)
         {
-            xSpeed = 5 - Greenfoot.getRandomNumber(3);
+            xSpeed = setXSpeed();
         }
         else
         {
-            xSpeed = -5 + Greenfoot.getRandomNumber(3);
+            xSpeed = setXSpeed() * -1;
         }
         if(x != 0 && x != 800)
         {
             y = 0;
+            xSpeed = setXSpeed()-1;
         }
         BlueBalloon blue = new BlueBalloon(xSpeed);
         addObject(blue, x, y);
@@ -93,15 +100,16 @@ public class MyWorld extends World {
         y = 200 - Greenfoot.getRandomNumber(150);
         if(x == 0)
         {
-            xSpeed = 5 - Greenfoot.getRandomNumber(3);
+            xSpeed = setXSpeed();
         }
         else
         {
-            xSpeed = -5 + Greenfoot.getRandomNumber(3);
+            xSpeed = setXSpeed() * -1;
         }
         if(x != 0 && x != 800)
         {
             y = 0;
+            xSpeed = setXSpeed()-1;
         }
         YellowBalloon yellow = new YellowBalloon(xSpeed);
         addObject(yellow, x, y);
