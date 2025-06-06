@@ -3,13 +3,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class RedBalloon here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Li
+ * @version June 2025
  */
 public class RedBalloon extends SmoothMover
 {
     int xSpeed;
     static double acceleration = 0.1;
+    
+    //RedBalloon constructor
     public RedBalloon(int speedX)
     {
         setImage("images/balloon1.png");

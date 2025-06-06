@@ -1,5 +1,11 @@
 import greenfoot.*;
 
+/**
+ * The world where the game takes place.
+ * 
+ * @author Li
+ * @version June 2025
+ */
 public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
@@ -7,7 +13,7 @@ public class MyWorld extends World {
     double ySpeed;
     int y = 0;
     
-    
+    //Constructor of MyWorld
     public MyWorld() {
         super(800, 400, 1, true);
         setBackground(new GreenfootImage("images/background.jpg"));

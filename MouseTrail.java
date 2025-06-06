@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MouseTrail here.
+ * Objects that appears when the user drags their mouse.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Li
+ * @version June 2025
  */
 public class MouseTrail extends Actor
 {

@@ -1,13 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class RedBalloon here.
+ * Write a description of class BlueBalloon here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Li
+ * @version June 2025
  */
 public class BlueBalloon extends RedBalloon
 {
+    //RedBalloon constructor
     public BlueBalloon(int speedX)
     {
         super(speedX);
