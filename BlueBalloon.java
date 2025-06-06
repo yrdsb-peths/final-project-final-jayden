@@ -12,7 +12,7 @@ public class BlueBalloon extends RedBalloon
     public BlueBalloon(int speedX)
     {
         super(speedX);
-        setImage("images/balloon2.png");
+        setImage("images/coconut.png");
     }
     
     public void act()

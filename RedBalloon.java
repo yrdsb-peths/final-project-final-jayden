@@ -14,7 +14,7 @@ public class RedBalloon extends SmoothMover
     //RedBalloon constructor
     public RedBalloon(int speedX)
     {
-        setImage("images/balloon1.png");
+        setImage("images/apple.png");
         xSpeed = speedX;
     }
     
