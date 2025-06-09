@@ -8,10 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-    Label titleLabel = new Label("Pop the Balloons", 60);
-    Label tutorial = new Label("Click the balloons before they", 40);
-    Label tutorial2 = new Label("fly out of the screen", 40);
-    Label startLabel = new Label("Press space to start", 40);
+    Label titleLabel = new Label("Fruit Ninja", 60);
+    Label tutorial = new Label("Tutorial", 40);
+    Label startLabel = new Label("Play", 40);
     /**
      * Constructor for objects of class TitleScreen.
      */
@@ -22,8 +21,7 @@ public class TitleScreen extends World
         setBackground("images/brick.jpg");
         
         addObject(titleLabel, getWidth()/2, getHeight()/2-100);
-        addObject(tutorial, getWidth()/2, getHeight()/2-25);
-        addObject(tutorial2, getWidth()/2, getHeight()/2+15);
+        addObject(tutorial, getWidth()/2, getHeight()/2+25);
         addObject(startLabel, getWidth()/2, getHeight()/2+100);
     }
     
@@ -32,8 +30,14 @@ public class TitleScreen extends World
      */
     public void act()
     {
+        if(Greenfoot.mouseClicked(tutorial))
+        {
+            Tutorial tutorialWorld = new Tutorial();
+            Greenfoot.setWorld(tutorialWorld);
+        }
+        
         // Starts the game if user presses the space bar
-        if(Greenfoot.isKeyDown("space"))
+        if(Greenfoot.mouseClicked(startLabel))
         {
             MyWorld gameWorld = new MyWorld();
             Greenfoot.setWorld(gameWorld);
