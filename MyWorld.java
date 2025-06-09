@@ -121,9 +121,30 @@ public class MyWorld extends World {
         addObject(yellow, x, y);
     }
     
+    public void createBomb()
+    {
+        int x = spawnLocation();
+        y = 200 - Greenfoot.getRandomNumber(150);
+        if(x == 0)
+        {
+            xSpeed = setXSpeed();
+        }
+        else
+        {
+            xSpeed = setXSpeed() * -1;
+        }
+        if(x != 0 && x != 800)
+        {
+            y = 0;
+            xSpeed = setXSpeed()-1;
+        }
+        Bomb bomb = new Bomb(xSpeed);
+        addObject(bomb, x, y);
+    }
+    
     public void spawnBalloon()
     {
-        int color = Greenfoot.getRandomNumber(3);
+        int color = Greenfoot.getRandomNumber(4);
         if(color == 0)
         {
             createRed();
@@ -135,6 +156,10 @@ public class MyWorld extends World {
         else if(color == 2)
         {
             createYellow();
+        }
+        else if(color == 3)
+        {
+            createBomb();
         }
     }
     
