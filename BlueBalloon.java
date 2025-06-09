@@ -8,11 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BlueBalloon extends RedBalloon
 {
-    //RedBalloon constructor
+    
+    //coconut constructor
     public BlueBalloon(int speedX)
     {
         super(speedX);
-        setImage("images/coconut.png");
+        GreenfootImage coconut = new GreenfootImage("images/coconut.png");
+        coconut.scale(50, 50);
+        setImage(coconut);
     }
     
     public void act()
@@ -23,6 +26,7 @@ public class BlueBalloon extends RedBalloon
         double x = getX() + xSpeed;
         double y = getY() + world.ySpeed;
         super.setLocation(x, y);
+        setRotation(getRotation() + 5);
         
         if(getY() >= 399)
         {

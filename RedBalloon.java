@@ -11,10 +11,11 @@ public class RedBalloon extends SmoothMover
     int xSpeed;
     static double acceleration = 0.1;
     
-    //RedBalloon constructor
+    //apple constructor
     public RedBalloon(int speedX)
     {
-        setImage("images/apple.png");
+        GreenfootImage apple = new GreenfootImage("images/apple.png");
+        setImage(apple);
         xSpeed = speedX;
     }
     
@@ -26,6 +27,7 @@ public class RedBalloon extends SmoothMover
         double x = getX() + xSpeed;
         double y = getY() + world.ySpeed;
         super.setLocation(x, y);
+        setRotation(getRotation() + 5);
         
         if(getY() >= 399)
         {
