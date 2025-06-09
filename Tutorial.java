@@ -20,6 +20,9 @@ public class Tutorial extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
+        GreenfootImage background = new GreenfootImage("images/tutorialBackground.jpeg");
+        background.scale(600, 400);
+        setBackground(background);
         
         addObject(tutorial1, getWidth()/2, getHeight()/2-150);
         addObject(tutorial2, getWidth()/2, getHeight()/2-75);
@@ -28,6 +31,8 @@ public class Tutorial extends World
     
     public void act()
     {
+        MouseTrail.dragTrail(this);
+        
         if(Greenfoot.mouseClicked(returnLabel))
         {
             TitleScreen startWorld = new TitleScreen();

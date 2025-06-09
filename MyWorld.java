@@ -16,7 +16,9 @@ public class MyWorld extends World {
     //Constructor of MyWorld
     public MyWorld() {
         super(800, 400, 1, true);
-        setBackground(new GreenfootImage("images/background.jpg"));
+        GreenfootImage background = new GreenfootImage("images/worldBackground.jpeg");
+        background.scale(800, 400);
+        setBackground(background);
         
         //add objects to world
         RedBalloon.acceleration = 0.1;
@@ -29,12 +31,7 @@ public class MyWorld extends World {
     
     public void act()
     {
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        if(Greenfoot.mouseDragged(null))
-        {
-            MouseTrail trail = new MouseTrail();
-            addObject(trail, mouse.getX(), mouse.getY());
-        } 
+        MouseTrail.dragTrail(this);
     }
     
     public int spawnLocation()

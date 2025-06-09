@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TitleScreen extends World
 {
     Label titleLabel = new Label("Fruit Ninja", 60);
-    Label tutorial = new Label("Tutorial", 40);
+    Label tutorialLabel = new Label("Tutorial", 40);
     Label startLabel = new Label("Play", 40);
     /**
      * Constructor for objects of class TitleScreen.
@@ -18,10 +18,12 @@ public class TitleScreen extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        setBackground("images/brick.jpg");
+        GreenfootImage background = new GreenfootImage("images/titleBackground.jpg");
+        background.scale(600, 400);
+        setBackground(background);
         
         addObject(titleLabel, getWidth()/2, getHeight()/2-100);
-        addObject(tutorial, getWidth()/2, getHeight()/2+25);
+        addObject(tutorialLabel, getWidth()/2, getHeight()/2+25);
         addObject(startLabel, getWidth()/2, getHeight()/2+100);
     }
     
@@ -30,7 +32,9 @@ public class TitleScreen extends World
      */
     public void act()
     {
-        if(Greenfoot.mouseClicked(tutorial))
+        MouseTrail.dragTrail(this);
+        
+        if(Greenfoot.mouseClicked(tutorialLabel))
         {
             Tutorial tutorialWorld = new Tutorial();
             Greenfoot.setWorld(tutorialWorld);
