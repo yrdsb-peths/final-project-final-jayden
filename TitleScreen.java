@@ -9,8 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TitleScreen extends World
 {
     Label titleLabel = new Label("Fruit Ninja", 60);
+    
+    Rectangle tutorialRect = new Rectangle(125, 50);
     Label tutorialLabel = new Label("Tutorial", 40);
+    
+    Rectangle startRect = new Rectangle(75, 50);
     Label startLabel = new Label("Play", 40);
+    
     /**
      * Constructor for objects of class TitleScreen.
      */
@@ -23,7 +28,11 @@ public class TitleScreen extends World
         setBackground(background);
         
         addObject(titleLabel, getWidth()/2, getHeight()/2-100);
+        
+        addObject(tutorialRect, getWidth()/2, getHeight()/2+25);
         addObject(tutorialLabel, getWidth()/2, getHeight()/2+25);
+        
+        addObject(startRect, getWidth()/2, getHeight()/2+100);
         addObject(startLabel, getWidth()/2, getHeight()/2+100);
     }
     
@@ -36,15 +45,13 @@ public class TitleScreen extends World
         
         if(Greenfoot.mouseClicked(tutorialLabel))
         {
-            Tutorial tutorialWorld = new Tutorial();
-            Greenfoot.setWorld(tutorialWorld);
+            Greenfoot.setWorld(new Tutorial());
         }
         
         // Starts the game if user presses the space bar
         if(Greenfoot.mouseClicked(startLabel))
         {
-            MyWorld gameWorld = new MyWorld();
-            Greenfoot.setWorld(gameWorld);
+            Greenfoot.setWorld(new MyWorld());
         }
     }
 }

@@ -7,8 +7,15 @@ import greenfoot.*;
  * @version June 2025
  */
 public class MyWorld extends World {
-    public int score = 0;
     Label scoreLabel;
+    
+    Rectangle retryRect = new Rectangle(150, 50);
+    Label retry = new Label("Try again", 40);
+    
+    Rectangle homeRect = new Rectangle(75, 40);
+    Label home = new Label("Home", 30);
+    
+    public int score = 0;
     int xSpeed;
     double ySpeed;
     int y = 0;
@@ -32,6 +39,14 @@ public class MyWorld extends World {
     public void act()
     {
         MouseTrail.dragTrail(this);
+        if(Greenfoot.mouseClicked(retry))
+        {
+            Greenfoot.setWorld(new MyWorld());
+        }
+        if(Greenfoot.mouseClicked(home))
+        {
+            Greenfoot.setWorld(new TitleScreen());
+        }
     }
     
     public int spawnLocation()
@@ -165,8 +180,15 @@ public class MyWorld extends World {
         removeObjects(getObjects(null));
         Label gameOverLabel = new Label("Game Over", 100);
         Label finalScore = new Label("Final score: " + score, 50);
+        
         addObject(gameOverLabel, 400, 200);
         addObject(finalScore, 400, 100);
+        
+        addObject(retryRect, 400, 300);
+        addObject(retry, 400, 300);
+        
+        addObject(homeRect, 75, 350);
+        addObject(home, 75, 350);
     }
     
     public void increaseScore()
