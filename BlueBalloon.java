@@ -16,6 +16,8 @@ public class BlueBalloon extends RedBalloon
         GreenfootImage coconut = new GreenfootImage("images/coconut.png");
         coconut.scale(50, 50);
         setImage(coconut);
+        
+        this.halfFruit = new GreenfootImage("images/slicedCoconut.png");
     }
     
     public void act()
