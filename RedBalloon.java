@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RedBalloon extends SmoothMover
 {
+    GreenfootSound sliceSound = new GreenfootSound("fruitSlice.mp3");
     int xSpeed;
     static double acceleration = 0.1;
     
@@ -36,6 +37,8 @@ public class RedBalloon extends SmoothMover
         
         if(Greenfoot.mouseDragged(this))
         {
+            sliceSound.stop();
+            sliceSound.play();
             world.removeObject(this);
             world.spawnBalloon();
             world.increaseScore();

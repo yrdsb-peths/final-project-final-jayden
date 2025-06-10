@@ -7,8 +7,15 @@ import greenfoot.*;
  * @version June 2025
  */
 public class MyWorld extends World {
-    public int score = 0;
     Label scoreLabel;
+    
+    Rectangle retryRect = new Rectangle(150, 50);
+    Label retry = new Label("Try again", 40);
+    
+    Rectangle returnRect = new Rectangle(100, 40);
+    Label home = new Label("Return", 30);
+    
+    public int score = 0;
     int xSpeed;
     double ySpeed;
     int y = 0;
@@ -16,7 +23,9 @@ public class MyWorld extends World {
     //Constructor of MyWorld
     public MyWorld() {
         super(800, 400, 1, true);
-        setBackground(new GreenfootImage("images/background.jpg"));
+        GreenfootImage background = new GreenfootImage("images/worldBackground.jpeg");
+        background.scale(800, 400);
+        setBackground(background);
         
         //add objects to world
         RedBalloon.acceleration = 0.1;
@@ -29,12 +38,15 @@ public class MyWorld extends World {
     
     public void act()
     {
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        if(Greenfoot.mouseDragged(null))
+        MouseTrail.dragTrail(this);
+        if(Greenfoot.mouseClicked(retry))
         {
-            MouseTrail trail = new MouseTrail();
-            addObject(trail, mouse.getX(), mouse.getY());
-        } 
+            Greenfoot.setWorld(new MyWorld());
+        }
+        if(Greenfoot.mouseClicked(home))
+        {
+            Greenfoot.setWorld(new TitleScreen());
+        }
     }
     
     public int spawnLocation()
@@ -121,9 +133,30 @@ public class MyWorld extends World {
         addObject(yellow, x, y);
     }
     
+    public void createBomb()
+    {
+        int x = spawnLocation();
+        y = 200 - Greenfoot.getRandomNumber(150);
+        if(x == 0)
+        {
+            xSpeed = setXSpeed();
+        }
+        else
+        {
+            xSpeed = setXSpeed() * -1;
+        }
+        if(x != 0 && x != 800)
+        {
+            y = 0;
+            xSpeed = setXSpeed()-1;
+        }
+        Bomb bomb = new Bomb(xSpeed);
+        addObject(bomb, x, y);
+    }
+    
     public void spawnBalloon()
     {
-        int color = Greenfoot.getRandomNumber(3);
+        int color = Greenfoot.getRandomNumber(4);
         if(color == 0)
         {
             createRed();
@@ -136,6 +169,10 @@ public class MyWorld extends World {
         {
             createYellow();
         }
+        else if(color == 3)
+        {
+            createBomb();
+        }
     }
     
     public void gameOver()
@@ -143,8 +180,15 @@ public class MyWorld extends World {
         removeObjects(getObjects(null));
         Label gameOverLabel = new Label("Game Over", 100);
         Label finalScore = new Label("Final score: " + score, 50);
+        
         addObject(gameOverLabel, 400, 200);
         addObject(finalScore, 400, 100);
+        
+        addObject(retryRect, 400, 300);
+        addObject(retry, 400, 300);
+        
+        addObject(returnRect, 75, 350);
+        addObject(home, 75, 350);
     }
     
     public void increaseScore()

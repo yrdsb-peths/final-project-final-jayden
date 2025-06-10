@@ -13,18 +13,28 @@ public class MouseTrail extends Actor
     //mousetrail constructor
     public MouseTrail() {
         GreenfootImage trail = new GreenfootImage(10, 10);
-        trail.setColor(Color.BLACK);
+        trail.setColor(Color.WHITE);
         trail.fillOval(0, 0, 10, 10);
         setImage(trail);
     }
     
     public void act()
     {
-        MyWorld world = (MyWorld) getWorld();
+        World world = (World) getWorld();
         duration--;
         if(duration <= 0)
         {
             world.removeObject(this);
         }
+    }
+    
+    public static void dragTrail(World selectedWorld)
+    {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if(Greenfoot.mouseDragged(null))
+        {
+            MouseTrail trail = new MouseTrail();
+            selectedWorld.addObject(trail, mouse.getX(), mouse.getY());
+        } 
     }
 }
