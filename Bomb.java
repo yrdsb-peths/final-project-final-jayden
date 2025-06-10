@@ -9,8 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bomb extends RedBalloon
 {
     GreenfootSound bombFuse = new GreenfootSound("bomb.mp3");
+    GreenfootSound bombExplode = new GreenfootSound("explode.mp3");
+    
     GreenfootImage[] bomb = new GreenfootImage[5];
     SimpleTimer animationTimer = new SimpleTimer();
+    
+    private boolean isSliced = false;
     
     public Bomb(int speedX)
     {
@@ -37,8 +41,10 @@ public class Bomb extends RedBalloon
         }
         animationTimer.mark(); 
         
+        if (imageIndex < bomb.length) {
         setImage(bomb[imageIndex]); 
         imageIndex++;
+        }
     }
     
     /**
@@ -48,26 +54,40 @@ public class Bomb extends RedBalloon
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
-        world.ySpeed+=acceleration;
-        double x = getX() + xSpeed;
-        double y = getY() + world.ySpeed;
-        super.setLocation(x, y);
-        setRotation(getRotation() + 5);
-        bombFuse.play();
         
-        if(getY() >= 399)
+        if (Greenfoot.mouseDragged(this) && !isSliced) 
         {
+            isSliced = true;
             bombFuse.stop();
-            world.removeObject(this);
-            world.spawnBalloon();
-            world.increaseScore();
         }
         
-        if(Greenfoot.mouseDragged(this))
+        if(isSliced)
         {
-            animateBomb(); //doesn't work
+            bombExplode.play();
+            animateBomb();
+            if (imageIndex == bomb.length) 
+            {
+                bombExplode.stop();
+                world.removeObject(this);
+                world.gameOver();
+            }
+        }
+        else
+        {
+            world.ySpeed+=acceleration;
+            double x = getX() + xSpeed;
+            double y = getY() + world.ySpeed;
+            super.setLocation(x, y);
+            setRotation(getRotation() + 5);
+            bombFuse.play();
             
-            world.gameOver();
+            if(getY() >= 399)
+            {
+                bombFuse.stop();
+                world.removeObject(this);
+                world.spawnBalloon();
+                world.increaseScore();
+            }
         }
     }
 }

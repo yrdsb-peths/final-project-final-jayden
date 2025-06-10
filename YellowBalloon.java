@@ -16,6 +16,8 @@ public class YellowBalloon extends RedBalloon
         GreenfootImage watermelon = new GreenfootImage("images/watermelon.png");
         watermelon.scale(50, 50);
         setImage(watermelon);
+        
+        this.halfFruit = new GreenfootImage("images/slicedWatermelon.png");
     }
     
     public void act()
