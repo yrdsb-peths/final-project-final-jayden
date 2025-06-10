@@ -7,7 +7,9 @@ import greenfoot.*;
  * @version June 2025
  */
 public class MyWorld extends World {
+    //Label implementation
     Label scoreLabel;
+    public int score = 0;
     
     Rectangle retryRect = new Rectangle(150, 50);
     Label retry = new Label("Try again", 40);
@@ -15,7 +17,7 @@ public class MyWorld extends World {
     Rectangle returnRect = new Rectangle(100, 40);
     Label home = new Label("Return", 30);
     
-    public int score = 0;
+    //Fruit speed variables
     int xSpeed;
     double ySpeed;
     int y = 0;
@@ -23,36 +25,43 @@ public class MyWorld extends World {
     //Constructor of MyWorld
     public MyWorld() {
         super(800, 400, 1, true);
+        
+        //Set world background
         GreenfootImage background = new GreenfootImage("images/worldBackground.jpeg");
         background.scale(800, 400);
         setBackground(background);
         
         //add objects to world
-        RedBalloon.acceleration = 0.1;
-        spawnBalloon();
+        Apple.acceleration = 0.1;
+        spawnObject();
         
         //score function
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 50, 50);
     }
     
+    //Changes world when user cilcks on home or retry label
     public void act()
     {
         MouseTrail.dragTrail(this);
+        
         if(Greenfoot.mouseClicked(retry))
         {
             Greenfoot.setWorld(new MyWorld());
         }
+        
         if(Greenfoot.mouseClicked(home))
         {
             Greenfoot.setWorld(new TitleScreen());
         }
     }
     
+    //This method chooses the location that the objects spawn
     public int spawnLocation()
     {
         int location = Greenfoot.getRandomNumber(3);
         ySpeed = -4 + Greenfoot.getRandomNumber(3);
+        
         if(location == 0)
         {
             ySpeed = 0;
@@ -62,18 +71,22 @@ public class MyWorld extends World {
         {
             return 800;
         }
+        
         return 0;
     }
     
+    //This method sets a randomized horizontal speed
     public int setXSpeed()
     {
         return 5 - Greenfoot.getRandomNumber(3);
     }
     
-    public void createRed()
+    //Spawns apple
+    public void createApple()
     {
         int x = spawnLocation();
         y = 200 - Greenfoot.getRandomNumber(150);
+        
         if(x == 0)
         {
             xSpeed = setXSpeed();
@@ -82,19 +95,23 @@ public class MyWorld extends World {
         {
             xSpeed = setXSpeed() * -1;
         }
+        
         if(x != 0 && x != 800)
         {
             y = 0;
             xSpeed = 4 - Greenfoot.getRandomNumber(8);
         }
-        RedBalloon red = new RedBalloon(xSpeed);
-        addObject(red, x, y);
+        
+        Apple app = new Apple(xSpeed);
+        addObject(app, x, y);
     }
     
-    public void createBlue()
+    //Spawns coconut
+    public void createCoconut()
     {
         int x = spawnLocation();
         y = 200 - Greenfoot.getRandomNumber(150);
+        
         if(x == 0)
         {
             xSpeed = setXSpeed();
@@ -103,19 +120,23 @@ public class MyWorld extends World {
         {
             xSpeed = setXSpeed() * -1;
         }
+        
         if(x != 0 && x != 800)
         {
             y = 0;
             xSpeed = setXSpeed()-1;
         }
-        BlueBalloon blue = new BlueBalloon(xSpeed);
-        addObject(blue, x, y);
+        
+        Coconut coconut = new Coconut(xSpeed);
+        addObject(coconut, x, y);
     }
     
-    public void createYellow()
+    //Spawns watermelon
+    public void createWatermelon()
     {
         int x = spawnLocation();
         y = 200 - Greenfoot.getRandomNumber(150);
+        
         if(x == 0)
         {
             xSpeed = setXSpeed();
@@ -124,19 +145,22 @@ public class MyWorld extends World {
         {
             xSpeed = setXSpeed() * -1;
         }
+        
         if(x != 0 && x != 800)
         {
             y = 0;
             xSpeed = setXSpeed()-1;
         }
-        YellowBalloon yellow = new YellowBalloon(xSpeed);
-        addObject(yellow, x, y);
+        Watermelon melon = new Watermelon(xSpeed);
+        addObject(melon, x, y);
     }
     
+    //Spawns bomb
     public void createBomb()
     {
         int x = spawnLocation();
         y = 200 - Greenfoot.getRandomNumber(150);
+        
         if(x == 0)
         {
             xSpeed = setXSpeed();
@@ -145,29 +169,33 @@ public class MyWorld extends World {
         {
             xSpeed = setXSpeed() * -1;
         }
+        
         if(x != 0 && x != 800)
         {
             y = 0;
             xSpeed = setXSpeed()-1;
         }
+        
         Bomb bomb = new Bomb(xSpeed);
         addObject(bomb, x, y);
     }
     
-    public void spawnBalloon()
+    //Randomizes fruit and bomb spawning
+    public void spawnObject()
     {
         int color = Greenfoot.getRandomNumber(4);
+        
         if(color == 0)
         {
-            createRed();
+            createApple();
         }
         else if(color == 1)
         {
-            createBlue();
+            createCoconut();
         }
         else if(color == 2)
         {
-            createYellow();
+            createWatermelon();
         }
         else if(color == 3)
         {
@@ -175,6 +203,7 @@ public class MyWorld extends World {
         }
     }
     
+    //Ends the game and writes game over
     public void gameOver()
     {
         removeObjects(getObjects(null));
@@ -191,6 +220,7 @@ public class MyWorld extends World {
         addObject(home, 75, 350);
     }
     
+    //Increase score and difficulty
     public void increaseScore()
     {
         score++;
@@ -198,7 +228,7 @@ public class MyWorld extends World {
         
         if(score % 15 == 0)
         {
-            RedBalloon.acceleration+=0.05;
+            Apple.acceleration+=0.05;
         }
     }
 }

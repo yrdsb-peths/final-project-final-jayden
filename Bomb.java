@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bomb here.
+ * Bomb, an object that the user should avoid.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Li 
+ * @version June 2025
  */
-public class Bomb extends RedBalloon
+public class Bomb extends Apple
 {
     GreenfootSound bombFuse = new GreenfootSound("bomb.mp3");
     GreenfootSound bombExplode = new GreenfootSound("explode.mp3");
@@ -16,6 +16,7 @@ public class Bomb extends RedBalloon
     
     private boolean isSliced = false;
     
+    //Bomb constructor
     public Bomb(int speedX)
     {
         super(speedX);
@@ -32,6 +33,7 @@ public class Bomb extends RedBalloon
         setImage(bomb[0]);
     }
     
+    //Animates the bomb
     int imageIndex = 0;
     public void animateBomb()
     {
@@ -41,20 +43,18 @@ public class Bomb extends RedBalloon
         }
         animationTimer.mark(); 
         
-        if (imageIndex < bomb.length) {
-        setImage(bomb[imageIndex]); 
-        imageIndex++;
+        if (imageIndex < bomb.length) 
+        {
+            setImage(bomb[imageIndex]); 
+            imageIndex++;
         }
     }
     
-    /**
-     * Act - do whatever the Bomb wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
         
+        //Checks if bomb is sliced
         if (Greenfoot.mouseDragged(this) && !isSliced) 
         {
             isSliced = true;
@@ -65,6 +65,8 @@ public class Bomb extends RedBalloon
         {
             bombExplode.play();
             animateBomb();
+            
+            //Ends game after bomb animation
             if (imageIndex == bomb.length) 
             {
                 bombExplode.stop();
@@ -74,6 +76,7 @@ public class Bomb extends RedBalloon
         }
         else
         {
+            //Bomb falls down and rotates
             world.ySpeed+=acceleration;
             double x = getX() + xSpeed;
             double y = getY() + world.ySpeed;
@@ -81,11 +84,12 @@ public class Bomb extends RedBalloon
             setRotation(getRotation() + 5);
             bombFuse.play();
             
+            //Adds score and new object when the bomb reaches the bottom
             if(getY() >= 399)
             {
                 bombFuse.stop();
                 world.removeObject(this);
-                world.spawnBalloon();
+                world.spawnObject();
                 world.increaseScore();
             }
         }

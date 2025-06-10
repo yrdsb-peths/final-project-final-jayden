@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SlicedFruit here.
+ * Half of the fruit that spawns after the user slices a fruit.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Li
+ * @version June 2025
  */
 public class SlicedFruit extends SmoothMover
 {
@@ -12,6 +12,7 @@ public class SlicedFruit extends SmoothMover
     private double ySpeed;
     private GreenfootImage image;
     
+    //SlicedFruit constructor
     public SlicedFruit(GreenfootImage img, double initialXSpeed, double initialYSpeed)
     {
         image = new GreenfootImage(img);
@@ -20,15 +21,12 @@ public class SlicedFruit extends SmoothMover
         ySpeed = initialYSpeed;
     }
     
-    /**
-     * Act - do whatever the SlicedFruit wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
         
-        ySpeed += RedBalloon.acceleration;
+        //Falls down the world
+        ySpeed += Apple.acceleration;
         double x = getX() + xSpeed;
         double y = getY() + ySpeed;
 
@@ -36,6 +34,7 @@ public class SlicedFruit extends SmoothMover
         
         setRotation(getRotation() + 10);
         
+        //Deletes when it reaches world floor
         if (getY() >= 399)
         {
             world.removeObject(this);

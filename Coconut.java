@@ -1,16 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BlueBalloon here.
+ * Coconut, a fruit that the user can slice.
  * 
  * @author Li
  * @version June 2025
  */
-public class BlueBalloon extends RedBalloon
+public class Coconut extends Apple
 {
     
     //coconut constructor
-    public BlueBalloon(int speedX)
+    public Coconut(int speedX)
     {
         super(speedX);
         GreenfootImage coconut = new GreenfootImage("images/coconut.png");
@@ -20,6 +20,7 @@ public class BlueBalloon extends RedBalloon
         this.halfFruit = new GreenfootImage("images/slicedCoconut.png");
     }
     
+    //Acts the same way as Apple class
     public void act()
     {
         super.act();

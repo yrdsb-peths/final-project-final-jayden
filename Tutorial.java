@@ -1,31 +1,31 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Tutorial here.
+ * Tutorial world, gives instructions on how to play the game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Li
+ * @version June 2025
  */
 public class Tutorial extends World
 {
+    //Label implementations
     Label tutorial1 = new Label("Slice the fruits with your mouse", 40);
     Label tutorial2 = new Label("Don't slice bombs", 40);
     
     Rectangle returnRect = new Rectangle(100, 50);
     Label returnLabel = new Label("Return", 40);
     
-    /**
-     * Constructor for objects of class Tutorial.
-     * 
-     */
+    //Tutorial constructor
     public Tutorial()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
+        
+        //Set world background
         GreenfootImage background = new GreenfootImage("images/tutorialBackground.jpeg");
         background.scale(600, 400);
         setBackground(background);
         
+        //Add objects to world
         addObject(tutorial1, getWidth()/2, getHeight()/2-150);
         addObject(tutorial2, getWidth()/2, getHeight()/2-75);
         
@@ -33,6 +33,7 @@ public class Tutorial extends World
         addObject(returnLabel, 75, 350);
     }
     
+    //Returns to TitleScreen world when return label is clicked
     public void act()
     {
         MouseTrail.dragTrail(this);

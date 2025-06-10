@@ -1,14 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Title Screen.
+ * Title Screen of the game.
  * 
  * @author Li
  * @version May 2025
  */
 public class TitleScreen extends World
 {
-    Label titleLabel = new Label("Fruit Ninja", 60);
+    //Label implementation
+    Label titleLabel = new Label("Fruit Slicing", 60);
     
     Rectangle tutorialRect = new Rectangle(125, 50);
     Label tutorialLabel = new Label("Tutorial", 40);
@@ -16,17 +17,17 @@ public class TitleScreen extends World
     Rectangle startRect = new Rectangle(75, 50);
     Label startLabel = new Label("Play", 40);
     
-    /**
-     * Constructor for objects of class TitleScreen.
-     */
+    //TitleScreen constructor
     public TitleScreen()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    {   
         super(600, 400, 1); 
+        
+        //Set world background
         GreenfootImage background = new GreenfootImage("images/titleBackground.jpg");
         background.scale(600, 400);
         setBackground(background);
         
+        //Add objects to world
         addObject(titleLabel, getWidth()/2, getHeight()/2-100);
         
         addObject(tutorialRect, getWidth()/2, getHeight()/2+25);
@@ -36,9 +37,7 @@ public class TitleScreen extends World
         addObject(startLabel, getWidth()/2, getHeight()/2+100);
     }
     
-    /**
-     * The main world act loop
-     */
+    //Changes the world when user cilcks on tutorial or start label
     public void act()
     {
         MouseTrail.dragTrail(this);
@@ -48,7 +47,6 @@ public class TitleScreen extends World
             Greenfoot.setWorld(new Tutorial());
         }
         
-        // Starts the game if user presses the space bar
         if(Greenfoot.mouseClicked(startLabel))
         {
             Greenfoot.setWorld(new MyWorld());

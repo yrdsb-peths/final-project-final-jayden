@@ -1,16 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class YellowBalloon here.
+ * Watermelon, a fruit that the user can slice.
  * 
  * @author Li
  * @version June 2025
  */
-public class YellowBalloon extends RedBalloon
+public class Watermelon extends Apple
 {
     
     //Watermelon constructor
-    public YellowBalloon(int speedX)
+    public Watermelon(int speedX)
     {
         super(speedX);
         GreenfootImage watermelon = new GreenfootImage("images/watermelon.png");
@@ -20,6 +20,7 @@ public class YellowBalloon extends RedBalloon
         this.halfFruit = new GreenfootImage("images/slicedWatermelon.png");
     }
     
+    //Acts the same way as the Apple class
     public void act()
     {
         super.act();
