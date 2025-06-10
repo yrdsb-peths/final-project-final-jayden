@@ -20,7 +20,8 @@ public class MyWorld extends World {
     //Fruit speed variables
     int xSpeed;
     double ySpeed;
-    int y = 0;
+    int x;
+    int y;
     
     //Constructor of MyWorld
     public MyWorld() {
@@ -81,10 +82,11 @@ public class MyWorld extends World {
         return 5 - Greenfoot.getRandomNumber(3);
     }
     
-    //Spawns apple
-    public void createApple()
+    //Prepares object spawn by setting the spawn location and
+    //object speed
+    public void prepareSpawn()
     {
-        int x = spawnLocation();
+        x = spawnLocation();
         y = 200 - Greenfoot.getRandomNumber(150);
         
         if(x == 0)
@@ -101,105 +103,33 @@ public class MyWorld extends World {
             y = 0;
             xSpeed = 4 - Greenfoot.getRandomNumber(8);
         }
-        
-        Apple app = new Apple(xSpeed);
-        addObject(app, x, y);
-    }
-    
-    //Spawns coconut
-    public void createCoconut()
-    {
-        int x = spawnLocation();
-        y = 200 - Greenfoot.getRandomNumber(150);
-        
-        if(x == 0)
-        {
-            xSpeed = setXSpeed();
-        }
-        else
-        {
-            xSpeed = setXSpeed() * -1;
-        }
-        
-        if(x != 0 && x != 800)
-        {
-            y = 0;
-            xSpeed = setXSpeed()-1;
-        }
-        
-        Coconut coconut = new Coconut(xSpeed);
-        addObject(coconut, x, y);
-    }
-    
-    //Spawns watermelon
-    public void createWatermelon()
-    {
-        int x = spawnLocation();
-        y = 200 - Greenfoot.getRandomNumber(150);
-        
-        if(x == 0)
-        {
-            xSpeed = setXSpeed();
-        }
-        else
-        {
-            xSpeed = setXSpeed() * -1;
-        }
-        
-        if(x != 0 && x != 800)
-        {
-            y = 0;
-            xSpeed = setXSpeed()-1;
-        }
-        Watermelon melon = new Watermelon(xSpeed);
-        addObject(melon, x, y);
-    }
-    
-    //Spawns bomb
-    public void createBomb()
-    {
-        int x = spawnLocation();
-        y = 200 - Greenfoot.getRandomNumber(150);
-        
-        if(x == 0)
-        {
-            xSpeed = setXSpeed();
-        }
-        else
-        {
-            xSpeed = setXSpeed() * -1;
-        }
-        
-        if(x != 0 && x != 800)
-        {
-            y = 0;
-            xSpeed = setXSpeed()-1;
-        }
-        
-        Bomb bomb = new Bomb(xSpeed);
-        addObject(bomb, x, y);
     }
     
     //Randomizes fruit and bomb spawning
     public void spawnObject()
     {
         int color = Greenfoot.getRandomNumber(4);
+        prepareSpawn();
         
         if(color == 0)
         {
-            createApple();
+            Apple app = new Apple(xSpeed);
+            addObject(app, x, y);
         }
         else if(color == 1)
         {
-            createCoconut();
+            Coconut coconut = new Coconut(xSpeed);
+            addObject(coconut, x, y);
         }
         else if(color == 2)
         {
-            createWatermelon();
+            Watermelon watermelon = new Watermelon(xSpeed);
+            addObject(watermelon, x, y);
         }
         else if(color == 3)
         {
-            createBomb();
+            Bomb bomb = new Bomb(xSpeed);
+            addObject(bomb, x, y);
         }
     }
     
