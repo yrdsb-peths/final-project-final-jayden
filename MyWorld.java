@@ -12,8 +12,8 @@ public class MyWorld extends World {
     Rectangle retryRect = new Rectangle(150, 50);
     Label retry = new Label("Try again", 40);
     
-    Rectangle homeRect = new Rectangle(75, 40);
-    Label home = new Label("Home", 30);
+    Rectangle returnRect = new Rectangle(100, 40);
+    Label home = new Label("Return", 30);
     
     public int score = 0;
     int xSpeed;
@@ -187,7 +187,7 @@ public class MyWorld extends World {
         addObject(retryRect, 400, 300);
         addObject(retry, 400, 300);
         
-        addObject(homeRect, 75, 350);
+        addObject(returnRect, 75, 350);
         addObject(home, 75, 350);
     }
     

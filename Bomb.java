@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bomb extends RedBalloon
 {
+    GreenfootSound bombFuse = new GreenfootSound("bomb.mp3");
     GreenfootImage[] bomb = new GreenfootImage[5];
     SimpleTimer animationTimer = new SimpleTimer();
     
@@ -52,9 +53,11 @@ public class Bomb extends RedBalloon
         double y = getY() + world.ySpeed;
         super.setLocation(x, y);
         setRotation(getRotation() + 5);
+        bombFuse.play();
         
         if(getY() >= 399)
         {
+            bombFuse.stop();
             world.removeObject(this);
             world.spawnBalloon();
             world.increaseScore();
